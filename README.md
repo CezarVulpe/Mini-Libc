@@ -190,7 +190,7 @@ _Note_: Both the `struct block_meta` and the **payload** of a block should be al
 
 _Note_: Most compilers will automatically pad the structure, but you should still align it for portability.
 
-![memory-block](./img/memory-block.svg)
+![memory-block](./memory-block.svg)
 
 #### Split Block
 
@@ -200,7 +200,7 @@ If we use one larger block the remaining size of that block will be wasted since
 
 To avoid this, a block should be truncated to the required size and the remaining bytes should be used to create a new free block.
 
-![Split Block](./img/split-block.svg)
+![Split Block](./split-block.svg)
 
 The resulting free block should be reusable.
 The split will not be performed if the remaining size (after reserving space for `block_meta` structure and payload) is not big enough to fit another block (`block_meta` structure and at least **1 byte** of usable memory).
@@ -214,7 +214,7 @@ This is called [External Memory Fragmentation](https://www.tutorialspoint.com/di
 
 One technique to reduce external memory fragmentation is **block coalescing** which implies merging adjacent free blocks to form a contiguous chunk.
 
-![Coalesce Block Image](./img/coalesce-blocks.svg)
+![Coalesce Block Image](./coalesce-blocks.svg)
 
 Coalescing will be used before searching for a block and in `os_realloc()` to expand the current block when possible.
 
