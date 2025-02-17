@@ -1,0 +1,263 @@
+make -C /home/student/operating-systems/content/assignments/mini-libc/src clean
+make[1]: Entering directory '/home/student/operating-systems/content/assignments/mini-libc/src'
+rm -f *~
+rm -f syscall.o process/exit.o mm/malloc.o mm/mmap.o mm/mem_list.o string/string.o stat/fstat.o stat/stat.o io/puts.o io/open.o io/close.o io/read_write.o io/lseek.o io/truncate.o io/ftruncate.o errno.o process/sleep.o process/nanosleep.o crt/__libc_start_main.o crt/start.o
+rm -f libc.a
+make[1]: Leaving directory '/home/student/operating-systems/content/assignments/mini-libc/src'
+make clean
+make[1]: Entering directory '/home/student/operating-systems/content/assignments/mini-libc/tests'
+make -C io clean
+make[2]: Entering directory '/home/student/operating-systems/content/assignments/mini-libc/tests/io'
+rm -f *~
+rm -f stat.o open_close_create_file.o puts.o open_invalid_access.o open_non_existent_file.o open_close_read_byte.o lseek.o fstat.o truncate.o open_close_existent_file.o ftruncate.o
+rm -f stat open_close_create_file puts open_invalid_access open_non_existent_file open_close_read_byte lseek fstat truncate open_close_existent_file ftruncate
+make[2]: Leaving directory '/home/student/operating-systems/content/assignments/mini-libc/tests/io'
+make -C memory clean
+make[2]: Entering directory '/home/student/operating-systems/content/assignments/mini-libc/tests/memory'
+rm -f *~
+rm -f multiple_malloc_free.o mmap_perm_notok.o multiple_malloc.o mmap_munmap.o malloc_free.o mmap_perm_none.o malloc.o malloc_perm_ok.o malloc_free_sequence.o mmap.o malloc_perm_notok.o mmap_perm_ok.o
+rm -f multiple_malloc_free mmap_perm_notok multiple_malloc mmap_munmap malloc_free mmap_perm_none malloc malloc_perm_ok malloc_free_sequence mmap malloc_perm_notok mmap_perm_ok
+make[2]: Leaving directory '/home/student/operating-systems/content/assignments/mini-libc/tests/memory'
+make -C process clean
+make[2]: Entering directory '/home/student/operating-systems/content/assignments/mini-libc/tests/process'
+rm -f *~
+rm -f sleep.o nanosleep.o
+rm -f sleep nanosleep
+make[2]: Leaving directory '/home/student/operating-systems/content/assignments/mini-libc/tests/process'
+rm -f *~
+rm -f graded_test.o test_io.o test_string.o test_memory.o
+rm -f test_io test_string test_memory
+make[1]: Leaving directory '/home/student/operating-systems/content/assignments/mini-libc/tests'
+make -i SRC_PATH=/home/student/operating-systems/content/assignments/mini-libc/src
+make[1]: Entering directory '/home/student/operating-systems/content/assignments/mini-libc/tests'
+make -C /home/student/operating-systems/content/assignments/mini-libc/src
+make[2]: Entering directory '/home/student/operating-systems/content/assignments/mini-libc/src'
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -Iinclude  -c -o syscall.o syscall.c
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -Iinclude  -c -o process/exit.o process/exit.c
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -Iinclude  -c -o mm/malloc.o mm/malloc.c
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -Iinclude  -c -o mm/mmap.o mm/mmap.c
+mm/mmap.c: In function ‘mmap’:
+mm/mmap.c:10:20: warning: initialization of ‘long int’ from ‘void *’ makes integer from pointer without a cast [-Wint-conversion]
+   10 |  long int result = (void *)syscall(9, addr, length, prot, flags, fd, offset);
+      |                    ^
+mm/mmap.c:14:16: warning: returning ‘int’ from a function with return type ‘void *’ makes pointer from integer without a cast [-Wint-conversion]
+   14 |         return -1;
+      |                ^
+mm/mmap.c: In function ‘mremap’:
+mm/mmap.c:29:16: warning: returning ‘int’ from a function with return type ‘void *’ makes pointer from integer without a cast [-Wint-conversion]
+   29 |         return -1;
+      |                ^
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -Iinclude  -c -o mm/mem_list.o mm/mem_list.c
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -Iinclude  -c -o string/string.o string/string.c
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -Iinclude  -c -o stat/fstat.o stat/fstat.c
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -Iinclude  -c -o stat/stat.o stat/stat.c
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -Iinclude  -c -o io/puts.o io/puts.c
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -Iinclude  -c -o io/open.o io/open.c
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -Iinclude  -c -o io/close.o io/close.c
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -Iinclude  -c -o io/read_write.o io/read_write.c
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -Iinclude  -c -o io/lseek.o io/lseek.c
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -Iinclude  -c -o io/truncate.o io/truncate.c
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -Iinclude  -c -o io/ftruncate.o io/ftruncate.c
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -Iinclude  -c -o errno.o errno.c
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -Iinclude  -c -o process/sleep.o process/sleep.c
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -Iinclude  -c -o process/nanosleep.o process/nanosleep.c
+process/nanosleep.c: In function ‘nanosleep’:
+process/nanosleep.c:7:28: warning: implicit declaration of function ‘syscall’ [-Wimplicit-function-declaration]
+    7 |  long int result = (void *)syscall(35, req, rem);
+      |                            ^~~~~~~
+process/nanosleep.c:7:20: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+    7 |  long int result = (void *)syscall(35, req, rem);
+      |                    ^
+process/nanosleep.c:7:20: warning: initialization of ‘long int’ from ‘void *’ makes integer from pointer without a cast [-Wint-conversion]
+process/nanosleep.c:13:12: warning: returning ‘void *’ from a function with return type ‘int’ makes integer from pointer without a cast [-Wint-conversion]
+   13 |     return (void *) result;
+      |            ^~~~~~~~~~~~~~~
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -Iinclude  -c -o crt/__libc_start_main.o crt/__libc_start_main.c
+nasm -f elf64 -o crt/start.o crt/start.asm
+ar -rc libc.a syscall.o process/exit.o mm/malloc.o mm/mmap.o mm/mem_list.o string/string.o stat/fstat.o stat/stat.o io/puts.o io/open.o io/close.o io/read_write.o io/lseek.o io/truncate.o io/ftruncate.o errno.o process/sleep.o process/nanosleep.o crt/__libc_start_main.o crt/start.o
+make[2]: Leaving directory '/home/student/operating-systems/content/assignments/mini-libc/src'
+make -C io SRC_PATH=/home/student/operating-systems/content/assignments/mini-libc/src
+make[2]: Entering directory '/home/student/operating-systems/content/assignments/mini-libc/tests/io'
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -I. -I/home/student/operating-systems/content/assignments/mini-libc/src/include  -c -o stat.o stat.c
+make -C /home/student/operating-systems/content/assignments/mini-libc/src
+make[3]: Entering directory '/home/student/operating-systems/content/assignments/mini-libc/src'
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/home/student/operating-systems/content/assignments/mini-libc/src'
+cc -nostdlib -no-pie -L/home/student/operating-systems/content/assignments/mini-libc/src -o stat stat.o -lc
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -I. -I/home/student/operating-systems/content/assignments/mini-libc/src/include  -c -o open_close_create_file.o open_close_create_file.c
+cc -nostdlib -no-pie -L/home/student/operating-systems/content/assignments/mini-libc/src -o open_close_create_file open_close_create_file.o -lc
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -I. -I/home/student/operating-systems/content/assignments/mini-libc/src/include  -c -o puts.o puts.c
+cc -nostdlib -no-pie -L/home/student/operating-systems/content/assignments/mini-libc/src -o puts puts.o -lc
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -I. -I/home/student/operating-systems/content/assignments/mini-libc/src/include  -c -o open_invalid_access.o open_invalid_access.c
+cc -nostdlib -no-pie -L/home/student/operating-systems/content/assignments/mini-libc/src -o open_invalid_access open_invalid_access.o -lc
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -I. -I/home/student/operating-systems/content/assignments/mini-libc/src/include  -c -o open_non_existent_file.o open_non_existent_file.c
+cc -nostdlib -no-pie -L/home/student/operating-systems/content/assignments/mini-libc/src -o open_non_existent_file open_non_existent_file.o -lc
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -I. -I/home/student/operating-systems/content/assignments/mini-libc/src/include  -c -o open_close_read_byte.o open_close_read_byte.c
+cc -nostdlib -no-pie -L/home/student/operating-systems/content/assignments/mini-libc/src -o open_close_read_byte open_close_read_byte.o -lc
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -I. -I/home/student/operating-systems/content/assignments/mini-libc/src/include  -c -o lseek.o lseek.c
+cc -nostdlib -no-pie -L/home/student/operating-systems/content/assignments/mini-libc/src -o lseek lseek.o -lc
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -I. -I/home/student/operating-systems/content/assignments/mini-libc/src/include  -c -o fstat.o fstat.c
+cc -nostdlib -no-pie -L/home/student/operating-systems/content/assignments/mini-libc/src -o fstat fstat.o -lc
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -I. -I/home/student/operating-systems/content/assignments/mini-libc/src/include  -c -o truncate.o truncate.c
+cc -nostdlib -no-pie -L/home/student/operating-systems/content/assignments/mini-libc/src -o truncate truncate.o -lc
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -I. -I/home/student/operating-systems/content/assignments/mini-libc/src/include  -c -o open_close_existent_file.o open_close_existent_file.c
+cc -nostdlib -no-pie -L/home/student/operating-systems/content/assignments/mini-libc/src -o open_close_existent_file open_close_existent_file.o -lc
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -I. -I/home/student/operating-systems/content/assignments/mini-libc/src/include  -c -o ftruncate.o ftruncate.c
+cc -nostdlib -no-pie -L/home/student/operating-systems/content/assignments/mini-libc/src -o ftruncate ftruncate.o -lc
+make[2]: Leaving directory '/home/student/operating-systems/content/assignments/mini-libc/tests/io'
+make -C memory SRC_PATH=/home/student/operating-systems/content/assignments/mini-libc/src
+make[2]: Entering directory '/home/student/operating-systems/content/assignments/mini-libc/tests/memory'
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -I. -I/home/student/operating-systems/content/assignments/mini-libc/src/include  -c -o mmap_perm_notok.o mmap_perm_notok.c
+make -C /home/student/operating-systems/content/assignments/mini-libc/src
+make[3]: Entering directory '/home/student/operating-systems/content/assignments/mini-libc/src'
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/home/student/operating-systems/content/assignments/mini-libc/src'
+cc -nostdlib -no-pie -L/home/student/operating-systems/content/assignments/mini-libc/src -o mmap_perm_notok mmap_perm_notok.o -lc
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -I. -I/home/student/operating-systems/content/assignments/mini-libc/src/include  -c -o multiple_malloc.o multiple_malloc.c
+cc -nostdlib -no-pie -L/home/student/operating-systems/content/assignments/mini-libc/src -o multiple_malloc multiple_malloc.o -lc
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -I. -I/home/student/operating-systems/content/assignments/mini-libc/src/include  -c -o mmap_munmap.o mmap_munmap.c
+cc -nostdlib -no-pie -L/home/student/operating-systems/content/assignments/mini-libc/src -o mmap_munmap mmap_munmap.o -lc
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -I. -I/home/student/operating-systems/content/assignments/mini-libc/src/include  -c -o malloc_free.o malloc_free.c
+cc -nostdlib -no-pie -L/home/student/operating-systems/content/assignments/mini-libc/src -o malloc_free malloc_free.o -lc
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -I. -I/home/student/operating-systems/content/assignments/mini-libc/src/include  -c -o mmap_perm_none.o mmap_perm_none.c
+cc -nostdlib -no-pie -L/home/student/operating-systems/content/assignments/mini-libc/src -o mmap_perm_none mmap_perm_none.o -lc
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -I. -I/home/student/operating-systems/content/assignments/mini-libc/src/include  -c -o multiple_malloc_free.o multiple_malloc_free.c
+cc -nostdlib -no-pie -L/home/student/operating-systems/content/assignments/mini-libc/src -o multiple_malloc_free multiple_malloc_free.o -lc
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -I. -I/home/student/operating-systems/content/assignments/mini-libc/src/include  -c -o malloc.o malloc.c
+cc -nostdlib -no-pie -L/home/student/operating-systems/content/assignments/mini-libc/src -o malloc malloc.o -lc
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -I. -I/home/student/operating-systems/content/assignments/mini-libc/src/include  -c -o malloc_perm_ok.o malloc_perm_ok.c
+cc -nostdlib -no-pie -L/home/student/operating-systems/content/assignments/mini-libc/src -o malloc_perm_ok malloc_perm_ok.o -lc
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -I. -I/home/student/operating-systems/content/assignments/mini-libc/src/include  -c -o malloc_free_sequence.o malloc_free_sequence.c
+cc -nostdlib -no-pie -L/home/student/operating-systems/content/assignments/mini-libc/src -o malloc_free_sequence malloc_free_sequence.o -lc
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -I. -I/home/student/operating-systems/content/assignments/mini-libc/src/include  -c -o mmap.o mmap.c
+cc -nostdlib -no-pie -L/home/student/operating-systems/content/assignments/mini-libc/src -o mmap mmap.o -lc
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -I. -I/home/student/operating-systems/content/assignments/mini-libc/src/include  -c -o malloc_perm_notok.o malloc_perm_notok.c
+cc -nostdlib -no-pie -L/home/student/operating-systems/content/assignments/mini-libc/src -o malloc_perm_notok malloc_perm_notok.o -lc
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -I. -I/home/student/operating-systems/content/assignments/mini-libc/src/include  -c -o mmap_perm_ok.o mmap_perm_ok.c
+cc -nostdlib -no-pie -L/home/student/operating-systems/content/assignments/mini-libc/src -o mmap_perm_ok mmap_perm_ok.o -lc
+make[2]: Leaving directory '/home/student/operating-systems/content/assignments/mini-libc/tests/memory'
+make -C process SRC_PATH=/home/student/operating-systems/content/assignments/mini-libc/src
+make[2]: Entering directory '/home/student/operating-systems/content/assignments/mini-libc/tests/process'
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -I. -I/home/student/operating-systems/content/assignments/mini-libc/src/include  -c -o sleep.o sleep.c
+make -C /home/student/operating-systems/content/assignments/mini-libc/src
+make[3]: Entering directory '/home/student/operating-systems/content/assignments/mini-libc/src'
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/home/student/operating-systems/content/assignments/mini-libc/src'
+cc -nostdlib -no-pie -L/home/student/operating-systems/content/assignments/mini-libc/src -o sleep sleep.o -lc
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -I. -I/home/student/operating-systems/content/assignments/mini-libc/src/include  -c -o nanosleep.o nanosleep.c
+cc -nostdlib -no-pie -L/home/student/operating-systems/content/assignments/mini-libc/src -o nanosleep nanosleep.o -lc
+make[2]: Leaving directory '/home/student/operating-systems/content/assignments/mini-libc/tests/process'
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -I. -I/home/student/operating-systems/content/assignments/mini-libc/src/include  -c -o test_io.o test_io.c
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -I. -I/home/student/operating-systems/content/assignments/mini-libc/src/include  -c -o graded_test.o graded_test.c
+cc -nostdlib -no-pie -L/home/student/operating-systems/content/assignments/mini-libc/src -o test_io test_io.o graded_test.o -lc
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -I. -I/home/student/operating-systems/content/assignments/mini-libc/src/include  -c -o test_string.o test_string.c
+cc -nostdlib -no-pie -L/home/student/operating-systems/content/assignments/mini-libc/src -o test_string test_string.o graded_test.o -lc
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -I. -I/home/student/operating-systems/content/assignments/mini-libc/src/include  -c -o test_memory.o test_memory.c
+cc -nostdlib -no-pie -L/home/student/operating-systems/content/assignments/mini-libc/src -o test_memory test_memory.o graded_test.o -lc
+make[1]: Leaving directory '/home/student/operating-systems/content/assignments/mini-libc/tests'
+./run_all_tests.sh
+test_strcpy                      ........................ passed ...   9
+test_strcpy_append               ........................ passed ...   9
+test_strncpy                     ........................ passed ...   9
+test_strncpy_cut                 ........................ passed ...   9
+test_strcat                      ........................ passed ...   9
+test_strcat_from_zero            ........................ passed ...   9
+test_strcat_multiple             ........................ passed ...   9
+test_strncat                     ........................ passed ...   9
+test_strncat_cut                 ........................ passed ...   9
+test_strcmp_equal                ........................ passed ...   9
+test_strcmp_same_size_less       ........................ passed ...   1
+test_strcmp_same_size_greater    ........................ passed ...   9
+test_strcmp_diff_size_less       ........................ passed ...   1
+test_strcmp_diff_size_greater    ........................ passed ...   9
+test_strncmp_equal_size_equal    ........................ passed ...   9
+test_strncmp_diff_contents_equal ........................ passed ...   9
+test_strncmp_diff_size_equal     ........................ passed ...   9
+test_strchr_exists               ........................ passed ...  11
+test_strchr_exists_twice         ........................ passed ...   9
+test_strchr_not_exists           ........................ passed ...   1
+test_strrchr_exists              ........................ passed ...  11
+test_strrchr_exists_twice        ........................ passed ...   9
+test_strrchr_not_exists          ........................ passed ...   1
+test_strstr_exists               ........................ passed ...  11
+test_strstr_exists_twice         ........................ passed ...   9
+test_strstr_not_exists           ........................ passed ...   1
+test_strrstr_exists              ........................ passed ...  11
+test_strrstr_exists_twice        ........................ passed ...   9
+test_strrstr_not_exists          ........................ passed ...   1
+test_memcpy                      ........................ passed ...  11
+test_memcpy_part                 ........................ passed ...   9
+test_memcmp_equal_size_equal     ........................ passed ...   9
+test_memcmp_diff_contents_equal  ........................ passed ...   9
+test_memcmp_diff_size_equal      ........................ passed ...   9
+test_memset                      ........................ passed ...   9
+test_memset_part                 ........................ passed ...   9
+test_memmove_apart               ........................ passed ...   9
+test_memmove_src_before_dst      ........................ passed ...   9
+test_memmove_src_after_dst       ........................ passed ...   9
+test_open_non_existent_file      ........................ passed ...   9
+test_open_file_as_directory      ........................ passed ...   9
+test_open_directory_for_writing  ........................ passed ...   9
+test_open_force_invalid_creation ........................ passed ...   9
+test_open_close_existent_file    ........................ passed ...   9
+test_open_close_create_file      ........................ passed ...   9
+test_open_read_write_only_mode   ........................ passed ...   9
+test_open_write_read_only_mode   ........................ passed ...   9
+test_lseek_invalid_fd            ........................ passed ...   9
+test_lseek_invalid_whence        ........................ passed ...   9
+test_lseek_invalid_offset        ........................ passed ...   9
+test_lseek_set                   ........................ passed ...   9
+test_lseek_cur                   ........................ passed ...   9
+test_lseek_end                   ........................ passed ...   9
+test_lseek_combined              ........................ passed ...   9
+test_truncate_invalid_size       ........................ passed ...   9
+test_truncate_directory          ........................ passed ...   8
+test_truncate_non_existent_file  ........................ passed ...   8
+test_truncate_file               ........................ passed ...   8
+test_ftruncate_read_only_file    ........................ passed ...   8
+test_ftruncate_invalid_size      ........................ passed ...   8
+test_ftruncate_directory         ........................ passed ...   8
+test_ftruncate_bad_fd            ........................ passed ...   8
+test_ftruncate_file              ........................ passed ...   8
+test_stat_non_existent_file      ........................ passed ...   8
+test_stat_regular_file           ........................ passed ...   8
+test_fstat_bad_fd                ........................ passed ...   8
+test_fstat_regular_file          ........................ passed ...   8
+test_puts                        ........................ passed ...  15
+test_open_close_create_file      ........................ passed ...  10
+test_open_close_read_byte        ........................ passed ...  10
+test_ftruncate                   ........................ passed ...  10
+test_truncate                    ........................ passed ...  10
+test_fstat                       ........................ passed ...  10
+test_stat                        ........................ passed ...  10
+./test_sleep.sh: line 47: kill: (4012) - No such process
+test_sleep                       ........................ passed ...  20
+test_nanosleep                   ........................ passed ...  20
+test_mmap                        ........................ passed ...   8
+test_mmap_bad_fd                 ........................ passed ...   8
+test_mmap_bad_flags              ........................ passed ...   8
+test_mremap                      ........................ passed ...   8
+test_malloc                      ........................ passed ...   8
+test_malloc_two                  ........................ passed ...   8
+test_malloc_access               ........................ passed ...   8
+test_malloc_memset               ........................ passed ...   8
+test_malloc_memcpy               ........................ passed ...   8
+test_calloc                      ........................ passed ...   8
+test_realloc                     ........................ passed ...   8
+test_realloc_access              ........................ passed ...   8
+test_realloc_memset              ........................ passed ...   8
+test_realloc_array               ........................ passed ...   8
+test_malloc                      ........................ passed ...  10
+test_multiple_malloc             ........................ passed ...  10
+test_malloc_free                 ........................ passed ...  10
+test_multiple_malloc_free        ........................ passed ...  10
+test_malloc_free_sequence        ........................ passed ...  10
+test_malloc_perm_ok              ........................ passed ...  10
+test_malloc_perm_notok           ........................ passed ...  10
+test_mmap                        ........................ passed ...  10
+test_mmap_munmap                 ........................ passed ...  10
+test_mmap_perm_ok                ........................ passed ...  10
+test_mmap_perm_notok             ........................ passed ...  10
+test_mmap_perm_none              ........................ passed ...  10
+
+Checker:                                                            90/100

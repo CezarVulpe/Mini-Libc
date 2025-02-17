@@ -1,0 +1,12 @@
+cd .. && checkpatch.pl -f src/*.c tests/*.c tests/*/*.c
+Must be run from the top-level dir. of a kernel tree
+make: [Makefile:45: lint] Error 2 (ignored)
+cd .. && checkpatch.pl -f checker/*.sh tests/*.sh
+Must be run from the top-level dir. of a kernel tree
+make: [Makefile:46: lint] Error 2 (ignored)
+cd .. && cpplint --recursive src/ tests/ checker/
+/bin/sh: 1: cpplint: not found
+make: [Makefile:47: lint] Error 127 (ignored)
+cd .. && shellcheck checker/*.sh tests/*.sh
+/bin/sh: 1: shellcheck: not found
+make: [Makefile:48: lint] Error 127 (ignored)
